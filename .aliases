@@ -152,3 +152,25 @@ alias reload="exec $SHELL -l"
 
 # Faster npm for europeans
 command -v npm > /dev/null && alias npme="npm --registry http://registry.npmjs.eu"
+
+# Connect and open screen, usually the screen has irc in it
+alias irc='ssh -t -p nkld "screen -rd"'
+
+# Controll spotify
+alias spotify="osascript ~/web/SpotifyControl/SpotifyControl.scpt"
+
+# Git info
+# http://justamemo.com/2009/02/09/git-info-almost-like-svn-info/
+alias gi='. /Users/$USER/git-info.sh'
+
+# Git Hub
+alias git=hub
+
+# Make a repo in GitHub
+alias mkrepo="curl -u "$1" https://api.github.com/user/repos -d '{"name":"$2"}'"
+
+# Test
+alias moro="echo moro : ${1}"
+
+# Convert gifs to videos
+alias gif2vid="echo ffmpeg -i ${1} -c:v libvpx -crf 4 -b:v 100K $2"
