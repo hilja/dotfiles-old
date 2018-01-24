@@ -159,18 +159,17 @@ alias irc='ssh -t -p nkld "screen -rd"'
 # Controll spotify
 alias spotify="osascript ~/web/SpotifyControl/SpotifyControl.scpt"
 
-# Git info
-# http://justamemo.com/2009/02/09/git-info-almost-like-svn-info/
-alias gi='. /Users/$USER/git-info.sh'
-
-# Git Hub
-alias git=hub
-
 # Make a repo in GitHub
 alias mkrepo="curl -u "$1" https://api.github.com/user/repos -d '{"name":"$2"}'"
 
-# Test
-alias moro="echo moro : ${1}"
-
 # Convert gifs to videos
 alias gif2vid="echo ffmpeg -i ${1} -c:v libvpx -crf 4 -b:v 100K $2"
+
+# Recreates the staging branch from the active branch
+alias recreate_staging="git branch -D staging && git checkout -b staging && git push origin --delete staging && git push -u origin staging && git checkout -"
+
+# Merge the current branch into staging and check back the current branch
+alias merge_into_staging="git checkout staging && git merge - && git push origin staging && git checkout -"
+
+# Delete branches that have been merged into the currently active branch
+alias delete_merged="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
